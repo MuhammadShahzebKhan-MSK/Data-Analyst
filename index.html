@@ -77,11 +77,11 @@
     <script>
         async function fetchReadme() {
             try {
-                const response = await fetch('https://api.github.com/repos/yourusername/your-repository-name/readme');
+                const response = await fetch('https://api.github.com/repos/muhammadshahzebkhan-msk/Data-Analyst/readme');
                 const data = await response.json();
-                const content = atob(data.content); // Decode base64 content
+                const content = atob(data.content);
                 const section = content.match(/#\s*Free and Low-Cost Food Programs Data Analytics Pipeline([^#]*)/);
-                document.getElementById('projectDetails').innerHTML = section ? marked(section[1]) : 'Project details not found';
+                document.getElementById('projectDetails').innerHTML = section ? section[1] : 'Project details not found';
             } catch (error) {
                 document.getElementById('projectDetails').innerHTML = 'Error loading project details';
             }
