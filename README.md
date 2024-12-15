@@ -133,16 +133,3 @@ Identified geographic disparities in food program availability.
 Highlighted areas with limited meal-providing services.
 
 Enabled better decision-making through comprehensive data analysis.
-
-How to Access the Project
-
-Clone the repository.
-
-Explore project files, including code, datasets, and detailed documentation.
-
-Review the data_analysis.ipynb notebook for analysis steps.
-
-Use the provided SQL queries for custom data exploration.
-
-For further details, please feel free to connect. This project demonstrates expertise in AWS-based data analysis, pipeline automation, and data-driven decision-making.
-
