@@ -14,12 +14,6 @@
         body {
             color: white;
             text-align: center;
-            overflow: hidden;
-        }
-        .background {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
             background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
             background-size: 400% 400%;
             animation: gradientAnimation 10s ease infinite;
@@ -28,26 +22,6 @@
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
-        }
-        .welcome {
-            padding: 20%;
-        }
-        .enter-button {
-            background: white;
-            color: black;
-            padding: 15px 30px;
-            font-size: 1.5em;
-            border: none;
-            cursor: pointer;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-        .main-content {
-            display: none;
         }
         .nav {
             display: flex;
@@ -78,61 +52,48 @@
     </style>
 </head>
 <body>
-    <div class="background"></div>
-    <div class="welcome">
-        <h1>Welcome to My Portfolio!</h1>
-        <h2>This is Muhammad Shahzeb Khan</h2>
-        <button class="enter-button" onclick="enterPortfolio()">Enter the World</button>
+    <h1>Welcome to My Portfolio</h1>
+    <div class="nav">
+        <a href="#about" onclick="showContent('about')">About Me</a>
+        <a href="#projects" onclick="showContent('projects')">My Projects</a>
+        <a href="#contact" onclick="showContent('contact')">Contact</a>
     </div>
 
-    <div class="main-content" id="mainContent">
-        <div class="nav">
-            <a href="#home" onclick="showContent('home')">Home</a>
-            <a href="#about" onclick="showContent('about')">About Me</a>
-            <a href="#projects" onclick="showContent('projects')">My Projects</a>
-            <a href="#contact" onclick="showContent('contact')">Contact</a>
-        </div>
+    <div id="about" class="content">
+        <h2>About Me</h2>
+        <p>I am Muhammad Shahzeb Khan, a data analyst with expertise in AWS services and data analytics tools.</p>
+    </div>
 
-        <div id="home" class="content">
-            <h2>Home</h2>
-            <p>Explore my journey in Data Analysis and AWS-based Data Engineering.</p>
-        </div>
+    <div id="projects" class="content">
+        <h2>My Projects</h2>
+        <div id="projectDetails">Loading...</div>
+    </div>
 
-        <div id="about" class="content">
-            <h2>About Me</h2>
-            <p>I am Muhammad Shahzeb Khan, a passionate data analyst with hands-on experience in AWS services like S3, Glue, Athena, and more.</p>
-        </div>
-
-        <div id="projects" class="content">
-            <h2>My Projects</h2>
-            <div id="projectDetails">Loading...</div>
-        </div>
-
-        <div id="contact" class="content">
-            <h2>Contact</h2>
-            <p>Get in touch via email or LinkedIn for collaborations and opportunities.</p>
-        </div>
+    <div id="contact" class="content">
+        <h2>Contact</h2>
+        <p>Email: shahzebkhan@example.com</p>
     </div>
 
     <script>
         async function fetchReadme() {
-            const response = await fetch('https://api.github.com/repos/muhammadshahzebkhan-msk/Data-Analyst/readme');
-            const data = await response.json();
-            const content = atob(data.content); // Decode base64 content
-            const section = content.match(/# Free and Low-Cost Food Programs Data Analytics Pipeline([^#]*)/);
-            document.getElementById('projectDetails').innerHTML = section ? marked(section[1]) : 'Section not found';
-        }
-
-        function enterPortfolio() {
-            document.querySelector('.welcome').style.display = 'none';
-            document.getElementById('mainContent').style.display = 'block';
-            fetchReadme();
+            try {
+                const response = await fetch('https://api.github.com/repos/yourusername/your-repository-name/readme');
+                const data = await response.json();
+                const content = atob(data.content); // Decode base64 content
+                const section = content.match(/#\s*Free and Low-Cost Food Programs Data Analytics Pipeline([^#]*)/);
+                document.getElementById('projectDetails').innerHTML = section ? marked(section[1]) : 'Project details not found';
+            } catch (error) {
+                document.getElementById('projectDetails').innerHTML = 'Error loading project details';
+            }
         }
 
         function showContent(sectionId) {
             const sections = document.querySelectorAll('.content');
             sections.forEach(section => section.classList.remove('active'));
             document.getElementById(sectionId).classList.add('active');
+            if (sectionId === 'projects') {
+                fetchReadme();
+            }
         }
     </script>
 
