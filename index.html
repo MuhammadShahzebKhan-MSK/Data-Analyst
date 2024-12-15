@@ -73,13 +73,13 @@
         <h2>Contact</h2>
     
         <p>Email: shahzebkhan506@gmail.com</p>
-        <p>LinkedIn: https://www.linkedin.com/in/muhammadshahzebkhan/</p>
+        <p>LinkedIn: ('https://www.linkedin.com/in/muhammadshahzebkhan/')/</p>
     </div>
 
     <script>
         async function fetchReadme() {
             try {
-                const response = await fetch('https://api.github.com/repos/muhammadshahzebkhan-msk/Data-Analyst/readme');
+                const response = await fetch('https://muhammadshahzebkhan-msk.github.io/My-Project/');
                 const data = await response.json();
                 const content = atob(data.content);
                 const section = content.match(/#\s*Free and Low-Cost Food Programs Data Analytics Pipeline([^#]*)/);
