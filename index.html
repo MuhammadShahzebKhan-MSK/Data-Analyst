@@ -83,6 +83,30 @@
         .active {
             display: block !important;
         }
+        .leaf {
+            position: absolute;
+            top: 0;
+            z-index: 1;
+            animation: fall 10s infinite;
+        }
+        .leaf img {
+            height: 75px;
+            width: 75px;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+        .leaf:nth-child(odd) {
+            animation-duration: 12s;
+        }
+        .leaf:nth-child(even) {
+            animation-duration: 8s;
+        }
     </style>
 </head>
 <body>
@@ -118,9 +142,31 @@
 
         <div id="contact" class="content">
             <h2>Contact</h2>
-<p>Get in touch via email at <span style="color: blue;">"shahzebkhan506@gmail.com"</span> or <a href="https://www.linkedin.com/in/muhammadshahzebkhan/" target="_blank">LinkedIn</a> for collaborations and opportunities.</p>
+            <p>Get in touch via email at <span style="color: blue;">"shahzebkhan506@gmail.com"</span> or <a href="https://www.linkedin.com/in/muhammadshahzebkhan/" target="_blank">LinkedIn</a> for collaborations and opportunities.</p>
         </div>
     </div>
+
+    <!-- Moving Leaves Section -->
+    <section>
+        <div class="leaf" style="left: 10%; animation-delay: 0s;">
+            <img src="http://www.pngmart.com/files/1/Fall-Autumn-Leaves-Transparent-PNG.png" alt="Leaf 1">
+        </div>
+        <div class="leaf" style="left: 20%; animation-delay: 2s;">
+            <img src="http://www.pngmart.com/files/1/Autumn-Fall-Leaves-Pictures-Collage-PNG.png" alt="Leaf 2">
+        </div>
+        <div class="leaf" style="left: 30%; animation-delay: 4s;">
+            <img src="http://www.pngmart.com/files/1/Autumn-Fall-Leaves-Clip-Art-PNG.png" alt="Leaf 3">
+        </div>
+        <div class="leaf" style="left: 40%; animation-delay: 6s;">
+            <img src="http://www.pngmart.com/files/1/Green-Leaves-PNG-File.png" alt="Leaf 4">
+        </div>
+        <div class="leaf" style="left: 50%; animation-delay: 8s;">
+            <img src="http://www.pngmart.com/files/1/Transparent-Autumn-Leaves-Falling-PNG.png" alt="Leaf 5">
+        </div>
+        <div class="leaf" style="left: 60%; animation-delay: 10s;">
+            <img src="http://www.pngmart.com/files/1/Realistic-Autumn-Fall-Leaves-PNG.png" alt="Leaf 6">
+        </div>
+    </section>
 
     <script>
         function enterPortfolio() {
