@@ -1,135 +1,141 @@
-# Free and Low-Cost Food Programs Data Analytics Pipeline
-
-Project Overview
-
-This project focuses on creating a complete Data Analytics Pipeline (DAP) for analyzing Free and Low-Cost Food Programs in Vancouver, leveraging various AWS services. The pipeline covers all essential stages, including data ingestion, profiling, cleaning, enrichment, protection, governance, and observability.
-
-Objective
-
-The objective of this project is to design a scalable data pipeline that processes, analyzes, and visualizes data related to free and low-cost food programs. The aim is to uncover insights such as service availability, geographic coverage, and program accessibility.
-
-Dataset Description
-
-Source: Vancouver Open Data Platform
-
-Key Features:
-
-Program Name
-
-Description
-
-Program Status
-
-Organization Name
-
-Program Population Served
-
-Address Extra Info
-
-Location Address
-
-Local Areas
-
-Provides Meals
-
-Provides Hampers
-
-Delivery Available
-
-Takeout Available
-
-Wheelchair Accessible
-
-Meal Cost
-
-Hamper Cost
-
-Methodology
-
-1. Data Ingestion
-
-Created S3 bucket opendata-flcfp-raw-msk.
-
-Uploaded raw dataset free-and-low-cost-food-programs.xlsx.
-
-2. Data Profiling
-
-Used AWS Glue DataBrew for profiling.
-
-Extracted statistics such as null values, data types, and distributions.
-
-Stored profiling results in S3 (opendata-flcfp-trf-msk/Data-Profiling).
-
-3. Data Cleaning
-
-Applied 22 transformations using AWS Glue DataBrew.
-
-Stored cleaned data in two formats:
-
-Parquet with Snappy compression (system folder).
-
-CSV (user folder).
-
-Organized data by Local Areas.
-
-4. Data Pipeline Design
-
-Built an AWS Glue ETL pipeline for descriptive and exploratory analysis.
-
-Dropped irrelevant columns and calculated counts per local area.
-
-Stored final outputs in S3 (opendata-flcfp-trf-msk/Descriptive & Exploratory).
-
-5. Data Enriching
-
-Created a secure virtual network and configured an instance for data collection.
-
-Merged user activity data into the dataset using DynamoDB, Athena, and crawlers.
-
-6. Data Protection
-
-Applied AWS KMS (Key Management Service) for data encryption.
-
-Created automated S3 bucket backups for disaster recovery.
-
-7. Data Governance
-
-Designed a data quality pipeline with rules for uniqueness and completeness.
-
-Stored validated datasets in S3 (Quality Folder).
-
-8. Data Observability
-
-Monitored pipeline activities using Amazon CloudWatch alarms.
-
-Built custom dashboards for real-time monitoring.
-
-Tools & Technologies
-
-Data Storage: Amazon S3
-
-Data Processing: AWS Glue, AWS Glue DataBrew, Amazon Athena
-
-Data Monitoring: Amazon CloudWatch, Amazon CloudTrail
-
-Data Security: AWS KMS, IAM Roles
-
-Data Visualization: QuickSight, Custom Dashboards
-
-Deliverables
-
-Processed datasets (CSV, Parquet formats).
-
-Fully automated ETL pipeline.
-
-Data visualization dashboards.
-
-Comprehensive project documentation.
-
-Key Insights and Findings
-
-Identified geographic disparities in food program availability.
-
-Highlighted areas with limited meal-providing services.
-
-Enabled better decision-making through comprehensive data analysis.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Shahzeb Khan - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            color: white;
+            text-align: center;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .background {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+            background-size: 400% 400%;
+            animation: gradientAnimation 10s ease infinite;
+            z-index: -1;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .welcome {
+            padding: 10%;
+        }
+        .enter-button {
+            background: white;
+            color: black;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .main-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        .nav a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.5em;
+            padding: 10px 20px;
+            border: 2px solid white;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .nav a:hover {
+            background: white;
+            color: black;
+        }
+        .content {
+            display: none;
+            padding: 50px;
+        }
+        .active {
+            display: block !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="welcome">
+        <h1>Welcome to My Portfolio!</h1>
+        <h2>This is Muhammad Shahzeb Khan</h2>
+        <button class="enter-button" onclick="enterPortfolio()">Enter the World</button>
+    </div>
+
+    <div class="main-content" id="mainContent">
+        <div class="nav">
+            <a href="#home" onclick="showContent('home')">Home</a>
+            <a href="#about" onclick="showContent('about')">About Me</a>
+            <a href="#projects" onclick="showContent('projects')">My Projects</a>
+            <a href="#contact" onclick="showContent('contact')">Contact</a>
+        </div>
+
+        <div id="home" class="content active">
+            <h2>Home</h2>
+            <p>Explore my journey in Data Analysis and AWS-based Data Engineering.</p>
+        </div>
+
+        <div id="about" class="content">
+            <h2>About Me</h2>
+            <p>I am Muhammad Shahzeb Khan, a passionate data analyst with hands-on experience in AWS services like S3, Glue, Athena, and more.</p>
+        </div>
+
+        <div id="projects" class="content">
+            <h2>My Projects</h2>
+            <p>Discover my exciting data projects, including the AWS Data Analytics Pipeline for Free and Low-Cost Food Programs.</p>
+        </div>
+
+        <div id="contact" class="content">
+            <h2>Contact</h2>
+            <p>Get in touch via email or LinkedIn for collaborations and opportunities.</p>
+        </div>
+    </div>
+
+    <script>
+        function enterPortfolio() {
+            document.querySelector('.welcome').style.display = 'none';
+            const mainContent = document.getElementById('mainContent');
+            mainContent.style.display = 'block';
+            setTimeout(() => {
+                mainContent.style.opacity = 1;
+            }, 100);
+        }
+        function showContent(sectionId) {
+            const sections = document.querySelectorAll('.content');
+            sections.forEach(section => section.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
